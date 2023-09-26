@@ -1,14 +1,17 @@
-export default function Workspace() {
+"use client";
+import Addnote from "../Addnote";
+import Notes from "../Notes";
+export function Workspace({ notes, handleAddNote }) {
   return (
-    <div className="bg-slate-400 w-full h-screen">
-      <div className="flex justify-center space-x-4 pt-10 ">
-        <div className="bg-white w-80 h-64">These are my notes</div>
-        <div className="bg-white w-80 h-64"></div>
-        <div className="bg-white w-80 h-64"></div>
+    <div className=" flex-col justify-center bg-slate-400 w-full h-screen">
+      <div className=" grid grid-cols-3 gap-4 mb-5 ">
+        {notes.map((note: any) => (
+          <Notes key={note} id={note.id} text={note.text} />
+        ))}
+
+        <Addnote handleAddNote={handleAddNote} />
       </div>
-      <div className="flex justify-center">
-        <p className=" pt-10">add more...</p>
-      </div>
+      <div className="flex justify-center"></div>
     </div>
   );
 }
