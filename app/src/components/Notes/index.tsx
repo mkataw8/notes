@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdDeleteForever } from "react-icons/md";
+import { FaTrash } from "react-icons/fa";
 
 type dataT = {
   id: any;
@@ -21,7 +21,7 @@ export default function Notes(props: dataT) {
             cols="25"
             placeholder="Type to add Note"
           ></textarea>
-          <MdDeleteForever onClick={() => handleDeleteNote(id)} />
+          <FaTrash onClick={() => handleDeleteNote(id)} />
         </div>
       </div>
     </div>
