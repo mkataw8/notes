@@ -1,6 +1,14 @@
 import { useState } from "react";
+import { MdDeleteForever } from "react-icons/md";
 
-export default function Notes({ id, text }) {
+type dataT = {
+  id: any;
+  text: any;
+  handleDeleteNote: any;
+};
+
+export default function Notes(props: dataT) {
+  const { id, text, handleDeleteNote } = props;
   const [noteD, setNoteD] = useState("inside");
   return (
     <div className="flex justify-center ">
@@ -13,6 +21,7 @@ export default function Notes({ id, text }) {
             cols="25"
             placeholder="Type to add Note"
           ></textarea>
+          <MdDeleteForever onClick={() => handleDeleteNote(id)} />
         </div>
       </div>
     </div>

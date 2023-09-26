@@ -20,7 +20,7 @@ export default function Home() {
     },
   ]);
 
-  const addNote = (text) => {
+  const addNote = (text: any) => {
     const newNote = {
       id: nanoid(),
       text: text,
@@ -28,11 +28,20 @@ export default function Home() {
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
   };
+
+  const deleteNote = (id: any) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
   return (
     <main>
       <Nav />
 
-      <Workspace notes={notes} handleAddNote={addNote} />
+      <Workspace
+        notes={notes}
+        handleAddNote={addNote}
+        handleDeleteNote={deleteNote}
+      />
     </main>
   );
 }

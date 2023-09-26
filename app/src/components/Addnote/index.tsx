@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
-export default function Addnote({ handleAddNote }) {
+type dataT = {
+  handleAddNote: any;
+};
+export default function Addnote(props: dataT) {
+  const { handleAddNote } = props;
   const [noteText, setNoteText] = useState("");
-  const handleChange = (event) => {
+  const handleChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setNoteText(event.target.value);
   };
   const handleSaveClick = () => {
