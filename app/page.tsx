@@ -5,26 +5,23 @@ import Nav from "./src/components/Nav";
 import { Workspace } from "./src/components/Workspace";
 
 export default function Home() {
-  const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      text: " this is my first note",
-    },
-    {
-      id: nanoid(),
-      text: " this is my second note",
-    },
-    {
-      id: nanoid(),
-      text: " this is my third note",
-    },
-  ]);
+  const [notes, setNotes] = useState([{ id: nanoid(), text: "welcome" }]);
+  // useEffect(() => {
+  //   const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
 
+  //   if (savedNotes) {
+  //     setNotes(savedNotes);
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
+  // }, [notes]);
   const addNote = (text: any) => {
     const newNote = {
       id: nanoid(),
       text: text,
     };
+
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
   };
@@ -33,6 +30,7 @@ export default function Home() {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
+
   return (
     <main>
       <Nav />

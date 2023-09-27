@@ -9,8 +9,8 @@ type dataT = {
 export function Workspace(props: dataT) {
   const { notes, handleAddNote, handleDeleteNote } = props;
   return (
-    <div className=" flex-col justify-center bg-slate-400 w-full h-screen">
-      <div className="  pt-5 grid grid-cols-3 gap-5  mb-5 ">
+    <div className=" flex place-content-center bg-slate-400 w-full h-screen">
+      <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 ">
         {notes.map((note: any) => (
           <Notes
             key={note}
