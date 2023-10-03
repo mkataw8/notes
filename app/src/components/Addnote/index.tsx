@@ -1,30 +1,48 @@
+import { useRouter } from "next/navigation";
 import { SetStateAction, useState } from "react";
-
 type dataT = {
   handleAddNote: any;
 };
 export default function Addnote(props: dataT) {
+  const router = useRouter();
   const { handleAddNote } = props;
   const [noteText, setNoteText] = useState("");
+  const [notes, setNotes] = useState("");
+
   const handleChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {
     setNoteText(event.target.value);
   };
-  const handleSaveClick = () => {
-    handleAddNote(noteText);
+
+  const handleSaveClick = async () => {
+    setNotes(noteText);
+    try {
+      const res = await fetch("http://localhost:3000/api/topics", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ notes }),
+      });
+
+      if (res.ok) {
+        router.refresh();
+      }
+    } catch (error) {}
   };
+  const rows = 10;
+  const cols = 25;
 
   return (
     <div className="flex justify-center ">
-      <div className="flex-col  bg-slate-200 w-80 h-80 ">
+      <div className="flex-col mt-5  bg-slate-200 w-80 h-80 ">
         <div className="flex justify-center">
           <textarea
             onChange={handleChange}
-            value={noteText}
             className=" mt-5"
-            rows="10"
-            cols="25"
+            rows={rows}
+            cols={cols}
             placeholder="Type to add Note"
           ></textarea>
         </div>

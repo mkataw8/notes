@@ -6,22 +6,24 @@ type dataT = {
   text: any;
   handleDeleteNote: any;
 };
-
+const rows = 10;
+const cols = 25;
 export default function Notes(props: dataT) {
   const { id, text, handleDeleteNote } = props;
   const [noteD, setNoteD] = useState("inside");
   return (
     <div className="flex justify-center ">
-      <div className="flex justify-center  bg-slate-200 w-80 h-80 ">
-        <div className="flex justify-center">
+      <div className="flex justify-center mt-5 bg-slate-400 w-80 h-80 ">
+        <div className=" flex justify-center">
           <textarea
             readOnly
             value={text}
-            className="outline-none m-5"
-            rows="11"
-            cols="25"
+            className="outline-none mt-5 mb-5 ml-4 "
+            rows={rows}
+            cols={cols}
             placeholder="Type to add Note"
           ></textarea>
+
           <FaTrash onClick={() => handleDeleteNote(id)} />
         </div>
       </div>
