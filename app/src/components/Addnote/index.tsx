@@ -14,7 +14,9 @@ export default function Addnote(props: dataT) {
   }) => {
     setNoteText(event.target.value);
   };
-
+  const handleClear = () => {
+    setNoteText("");
+  };
   const handleSaveClick = async () => {
     setNotes(noteText);
     try {
@@ -43,10 +45,18 @@ export default function Addnote(props: dataT) {
             className=" mt-5"
             rows={rows}
             cols={cols}
-            placeholder="Type to add Note"
+            value={noteText}
+            placeholder="Type to  Note"
           ></textarea>
         </div>
-        <div className="flex justify-end m-2">
+
+        <div className="flex justify-end items-center m-2">
+          <p
+            onClick={handleClear}
+            className=" m-2 text-sm text-slate-400 hover:text-black"
+          >
+            Clear
+          </p>
           <button
             className="flex-end bg-blue-600 w-20 h-10 text-white"
             onClick={handleSaveClick}
