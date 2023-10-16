@@ -9,13 +9,15 @@ export default function Home() {
   const [notes, setNotes] = useState([{ text: "welcome" }]);
 
   const addNote = (text: any) => {
-    const newNote = {
-      id: nanoid(),
-      text: text,
-    };
+    setNotes((prevNotes) => {
+      const newNote = {
+        id: nanoid(),
+        text: text,
+      };
 
-    const newNotes = [...notes, newNote];
-    setNotes(newNotes);
+      const newNotes = [...prevNotes, newNote];
+      return newNotes;
+    });
   };
 
   const deleteNote = async (id: string) => {

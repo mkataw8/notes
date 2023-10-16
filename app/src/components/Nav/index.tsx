@@ -5,7 +5,8 @@ export default function Nav() {
         <h1 className=" flex justify-center text-5xl text-white ">Notes</h1>
 
         <ul className="flex text-white ">
-          <li>Login</li>/<li>SignUp</li>
+          {/* implementing soon */}
+          {/* <li>Login</li>/<li>SignUp</li> */}
         </ul>
       </nav>
     </div>

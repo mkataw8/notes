@@ -18,20 +18,23 @@ export default function Addnote(props: dataT) {
     setNoteText("");
   };
   const handleSaveClick = async () => {
-    setNotes(noteText);
     try {
       const res = await fetch("http://localhost:3000/api/topics", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ notes }),
+        body: JSON.stringify({ notes: noteText }), // Use noteText here
       });
 
       if (res.ok) {
         router.refresh();
+        setNotes(noteText); // Update notes state with the new note text
+        setNoteText(""); // Clear the input
       }
-    } catch (error) {}
+    } catch (error) {
+      // Handle errors
+    }
   };
   const rows = 10;
   const cols = 25;
