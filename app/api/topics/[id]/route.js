@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import connectMongoDB from "../../../libs/mongoDB";
+import { connectMongoDB } from "../../../../libs/mongoDB/mongoDB";
+
 export async function PUT(request, { params }) {
   const { id } = params;
   const { newNote: notes } = await request.json();
