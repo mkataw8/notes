@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+import { mongoose, Schema } from "mongoose";
 
-const topicSchema = new mongoose.Schema({
-  notes: [{ type: String }], // Using an array for multiple notes
+const topicSchema = new Schema({
+  notes: String,
 });
 
 const Topic = mongoose.models.Topic || mongoose.model("Topic", topicSchema);
 
-export default mongoose.models.Topic || mongoose.model("Topic", topicSchema);
+export default Topic;

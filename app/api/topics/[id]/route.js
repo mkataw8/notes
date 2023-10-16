@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectMongoDB } from "../../../../libs/mongoDB/mongoDB";
-import Topic from "../../../../models/topic"; // You need to import the Topic model
+import Topic from "../../../../models/topic";
 
 export async function PUT(request, { params }) {
   const { id } = params;
